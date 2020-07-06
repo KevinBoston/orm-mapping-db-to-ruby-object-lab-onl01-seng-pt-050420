@@ -28,10 +28,8 @@ class Student
     sql = <<-SQL
       SELECT name 
       FROM students 
-      WHERE students.name = name
-    
-    
-    
+      WHERE name = ?
+      LIMIT 1
     SQL
     selected_student = DB[:conn].execute(sql)
     self.new_from_db(selected_student)
